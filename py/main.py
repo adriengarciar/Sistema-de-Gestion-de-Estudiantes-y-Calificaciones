@@ -3,6 +3,7 @@ estudiantes = []
 
 #Diccionario base para crear los nuevos estudiantes
 estudiante_base = {
+    "ID", ""
     "nombre": "",
     "apellido": "",
     "calificaciones": None
