@@ -1,3 +1,5 @@
+estudiantes = []
+
 def registrar_alumnos():
     
     def validar_nombre(nombre):
@@ -5,10 +7,16 @@ def registrar_alumnos():
             print('Error, por favor intente colocar algo')
             return False
             
+        elif " " in nombre.strip():
+            print("Solo coloque un nombre, sin espacios.")
+            return False
+
+        
         elif not nombre.isalpha():
                 print('error, por favor intente sin numeros')
                 return False
-
+            
+   
         return True
         
         
@@ -17,9 +25,16 @@ def registrar_alumnos():
             print('Error, por favor intente colocar algo')
             return False
             
+        elif " " in nombre.strip():
+            print("Solo coloque un apellido, sin espacios.")
+            return False
+
+        
         elif not apellido.isalpha():
-                print('error, por favor intente sin numeros')
+                print('error, por favor intente de nuevo')
                 return False
+            
+       
         return True
             
     def validar_nota(nota):
@@ -63,7 +78,18 @@ def registrar_alumnos():
 nombre, apellido, nota = registrar_alumnos()
 
 
+stu1 = {
+        'id': len(estudiantes) + 1,
+        'Nombre': nombre,
+        'Apellido': apellido,
+        'Nota': nota,
+        }
+
+
+estudiantes.append(stu1)
+
 print("Datos obtenidos:")
+print(f"ID: {stu1['id']}")
 print(f"{nombre} {apellido} | {nota:.2f}")
 
 
