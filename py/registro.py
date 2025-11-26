@@ -1,5 +1,3 @@
-estudiantes = []
-
 def registrar_alumnos():
     
     def validar_nombre(nombre):
@@ -56,42 +54,34 @@ def registrar_alumnos():
       
         nombre = input('Ingrese el nombre del estudiante: ')
         if validar_nombre(nombre):
+            nombre = nombre.capitalize()
             break
     while True:
         
         apellido = input('Ingrese el apellido del estudiante: ')
         if validar_apellido(apellido):
+            apellido = apellido.capitalize()
             break
         
     while True:
         
         nota = input('Ingrese la nota acumulada del estudiante: ')
-        if validar_nota(nota):
-            nota = float(nota)
+        nota_valida = validar_nota(nota)
+        if nota_valida:
+            nota = nota_valida
             break
       
     return nombre, apellido, nota
             
             
-
                     
 nombre, apellido, nota = registrar_alumnos()
 
 
-stu1 = {
-        'id': len(estudiantes) + 1,
+alumno = {
         'Nombre': nombre,
         'Apellido': apellido,
         'Nota': nota,
         }
 
-
-estudiantes.append(stu1)
-
-print("Datos obtenidos:")
-print(f"ID: {stu1['id']}")
-print(f"{nombre} {apellido} | {nota:.2f}")
-
-
-
-
+ return alumno
