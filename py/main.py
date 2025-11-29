@@ -17,7 +17,7 @@ def limpiar_pantalla():
 
 # FUNCIONES A IMPORTAR
 
-#from calificaciones import asignar_nota
+from calificaciones import asignar_nota
 from registro import registrar_alumnos
 from listaestudiantes import lista_estudiantes
 # from reportes import
