@@ -33,7 +33,7 @@ def menu_principal():
         print("9. Salir")
         print("==============================")
 
-        opcion = input("\nSeleccione una opción: \n")
+        opcion = input("\nSeleccione una opción: ")
 
         if opcion == "1":
             nombre, apellido, nota = registrar_alumnos()
@@ -47,10 +47,9 @@ def menu_principal():
 
             estudiantes.append(stu1)
 
-            print("Datos obtenidos:")
+            print("\nDatos obtenidos:")
             print(f"ID: {stu1['id']}")
             print(f"{nombre} {apellido} | {nota:.2f}")
-            registrar_alumnos()
 
         elif opcion == "2":
             asignar_nota(estudiantes)
@@ -68,11 +67,11 @@ def menu_principal():
             buscar_estudiante(estudiantes)
 
         elif opcion == "9":
-            print("Saliendo del sistema...")
+            print("\nSaliendo del sistema...")
             break
 
         else:
-            print("Opción no válida, intente nuevamente.")
+            print("\nOpción no válida, intente nuevamente.\n")
 
 if __name__ == "__main__":
     menu_principal()
