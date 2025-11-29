@@ -8,7 +8,7 @@ def asignar_nota(estudiantes):
 
     # Buscar a cualquier estudiante  por ID
     for est in estudiantes:
-        if est["ID"] == id_buscar:
+        if est["id"] == id_buscar:
             print(f"\nEstudiante encontrado: {est['nombre']} {est['apellido']}")
 
             try:
@@ -31,4 +31,5 @@ def asignar_nota(estudiantes):
             return
 
     print(" No se encontró un estudiante con ese ID.")
+
 
