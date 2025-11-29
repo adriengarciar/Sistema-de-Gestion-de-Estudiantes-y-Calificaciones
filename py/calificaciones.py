@@ -51,6 +51,8 @@ def asignar_nota(estudiantes):
     except ValueError:
         print("\n Error: Entrada inválida. Asegúrese de ingresar números para el ID y la nota.")
 
+if __name__ == "__main__":
+    menu_principal()
 
 
 
