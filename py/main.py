@@ -21,7 +21,7 @@ def limpiar_pantalla():
 from registro import registrar_alumnos
 from listaestudiantes import lista_estudiantes
 # from reportes import
-from buscar_estudiante import buscar_estudiante
+from buscar_estudiantes import buscar_estudiante
 
 
 #          MENÚ PRINCIPAL
