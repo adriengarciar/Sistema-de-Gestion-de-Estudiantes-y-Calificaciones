@@ -9,12 +9,19 @@ estudiantes = []
 #     "calificaciones": None
 # }
 
+#limpiar terminal
+
+import os
+def limpiar_pantalla():
+    os.system('cls' if os.name == 'nt' else 'clear')    
+
 # FUNCIONES A IMPORTAR
 
-from calificaciones import asignar_nota
+#from calificaciones import asignar_nota
 from registro import registrar_alumnos
 from listaestudiantes import lista_estudiantes
 # from reportes import
+from buscar_estudiante import buscar_estudiante
 
 
 #          MENÚ PRINCIPAL
@@ -36,20 +43,19 @@ def menu_principal():
         opcion = input("\nSeleccione una opción: ")
 
         if opcion == "1":
-            nombre, apellido, nota = registrar_alumnos()
+            nombre, apellido = registrar_alumnos()
 
             stu1 = {
                 'id': len(estudiantes) + 1,
                 'nombre': nombre,
                 'apellido': apellido,
-                'nota': nota,
             }
 
             estudiantes.append(stu1)
 
             print("\nDatos obtenidos:")
             print(f"ID: {stu1['id']}")
-            print(f"{nombre} {apellido} | {nota:.2f}")
+            print(f"{nombre} | {apellido}")
 
         elif opcion == "2":
             asignar_nota(estudiantes)
