@@ -15,7 +15,7 @@ def asignar_nota(estudiantes):
         id_est = int(input("\n\nIngrese el ID del estudiante: "))
 
         # Buscar el estudiante por ID
-        estudiante = next((e for e in estudiantes if e.get('id') == id_est), None)
+        estudiante = next((est for est in estudiantes if est.get('id') == id_est), None)
 
         if not estudiante:
             print("\n Estudiante con ese ID no encontrado.")
