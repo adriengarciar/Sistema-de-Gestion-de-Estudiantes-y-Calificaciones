@@ -3,7 +3,7 @@ def asignar_nota(estudiantes):
         print("\n No hay estudiantes registrados para asignar notas.")
         return
 
-<<<<<<< HEAD
+
     print("\n===== ASIGNAR CALIFICACIÓN =====")
     id_input = input("Ingrese el ID del estudiante: ")
 
@@ -18,20 +18,18 @@ def asignar_nota(estudiantes):
     for est in estudiantes:
         if est.get("id") == id_buscar:
             print(f"\nEstudiante encontrado: {est.get('nombre')} {est.get('apellido')}")
-=======
+
     # 1. Mostrar lista de estudiantes
     print("\n=== ASIGNAR NOTA ===\n")
     print("Estudiantes disponibles:\n")
     for est in estudiantes:
         # Asumiendo que 'id', 'nombre', y 'apellido' existen
         print(f"ID: {est.get('id')} - {est.get('nombre','')} {est.get('apellido','')}")
->>>>>>> c8ba5c1fa3f34f839d63778705ed3febe5a603f6
 
     try:
         # 2. Seleccionar estudiante
         id_est = int(input("\n\nIngrese el ID del estudiante: "))
 
-<<<<<<< HEAD
             # Si no tiene calificaciones crear lista
             if est.get("calificaciones") is None:
                 est["calificaciones"] = []
@@ -41,13 +39,13 @@ def asignar_nota(estudiantes):
 
             print("Nota asignada correctamente.")
             print(f"Notas actuales: {est['calificaciones']}")
-=======
+
         # Buscar el estudiante por ID
         estudiante = next((est for est in estudiantes if est.get('id') == id_est), None)
 
         if not estudiante:
             print("\n Estudiante con ese ID no encontrado.")
->>>>>>> c8ba5c1fa3f34f839d63778705ed3febe5a603f6
+
             return
 
         # 3. Seleccionar materia
