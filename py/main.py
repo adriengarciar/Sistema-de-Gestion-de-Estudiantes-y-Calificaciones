@@ -66,9 +66,10 @@ def menu_principal():
             lista_estudiantes(estudiantes)
             
         elif opcion == "4":
-
-            elegir = input("\n¿Desea generar reportes básicos (1) o ir al menú de reportes (1)? (1/2): ").strip()
-
+            print("\nEliga una opción:")
+            print("1. Generar reportes básicos.")
+            print("2. Ir al menú de reportes.")
+            elegir = input("\nEliga 1:\t").strip()
             if elegir == '2':
                 menu_reportes(estudiantes)
             elif elegir == '1':
