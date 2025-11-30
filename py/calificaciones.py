@@ -4,12 +4,19 @@ def asignar_nota(estudiantes):
         return
 
     print("\n===== ASIGNAR CALIFICACIÓN =====")
-    id_buscar = input("Ingrese el ID del estudiante: ")
+    id_input = input("Ingrese el ID del estudiante: ")
 
-    # Buscar a cualquier estudiante  por ID
+    # Convertir ID a entero
+    try:
+        id_buscar = int(id_input)
+    except ValueError:
+        print("ID inválido. Debe ingresar un número entero.")
+        return
+
+    # Buscar al estudiante por ID
     for est in estudiantes:
-        if est["id"] == id_buscar:
-            print(f"\nEstudiante encontrado: {est['nombre']} {est['apellido']}")
+        if est.get("id") == id_buscar:
+            print(f"\nEstudiante encontrado: {est.get('nombre')} {est.get('apellido')}")
 
             try:
                 nueva_nota = float(input("Ingrese la calificación (0 - 100): "))
@@ -21,10 +28,11 @@ def asignar_nota(estudiantes):
                 return
 
             # Si no tiene calificaciones crear lista
-            if est["calificaciones"] is None:
+            if est.get("calificaciones") is None:
                 est["calificaciones"] = []
 
-            est["calificaciones"](nueva_nota)
+            # Añadir la nueva nota
+            est["calificaciones"].append(nueva_nota)
 
             print("Nota asignada correctamente.")
             print(f"Notas actuales: {est['calificaciones']}")

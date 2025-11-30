@@ -36,20 +36,20 @@ def menu_principal():
         opcion = input("\nSeleccione una opción: ")
 
         if opcion == "1":
-            nombre, apellido, nota = registrar_alumnos()
+            nombre, apellido = registrar_alumnos()
 
             stu1 = {
                 'id': len(estudiantes) + 1,
                 'nombre': nombre,
                 'apellido': apellido,
-                'nota': nota,
+                'calificaciones': []
             }
 
             estudiantes.append(stu1)
 
             print("\nDatos obtenidos:")
             print(f"ID: {stu1['id']}")
-            print(f"{nombre} {apellido} | {nota:.2f}")
+            print(f"{nombre} {apellido}")
 
         elif opcion == "2":
             asignar_nota(estudiantes)
