@@ -3,59 +3,67 @@ def asignar_nota(estudiantes):
         print("\n No hay estudiantes registrados para asignar notas.")
         return
 
-
-    print("\n===== ASIGNAR CALIFICACIÓN =====")
-
-    # 1. Mostrar lista de estudiantes
+    # Mostrar lista breve de estudiantes
     print("\n=== ASIGNAR NOTA ===\n")
-    print("Estudiantes disponibles:\n")
+    print("Estudiantes disponibles:")
     for est in estudiantes:
-        # Asumiendo que 'id', 'nombre', y 'apellido' existen
         print(f"ID: {est.get('id')} - {est.get('nombre','')} {est.get('apellido','')}")
 
+    # Seleccionar estudiante por ID
     try:
-        # 2. Seleccionar estudiante
-        id_est = int(input("\n\nIngrese el ID del estudiante: "))
-
-        # Buscar el estudiante por ID
-        estudiante = next((s for s in estudiantes if s.get('id') == id_est), None)
-
-        if not estudiante:
-            print("\n Estudiante con ese ID no encontrado.")
-            return
-
-        # Asegurar que la clave 'calificaciones' exista y sea un diccionario
-        if 'calificaciones' not in estudiante or not isinstance(estudiante.get('calificaciones'), dict):
-            estudiante['calificaciones'] = {}
-
-        # 3. Seleccionar materia
-        print(f"\n\nAsignando nota a: {estudiante.get('nombre','')} {estudiante.get('apellido','')}\n")
-        print("Materias disponibles:")
-        print(" 1) Algoritmos")
-        print(" 2) Programación\n")
-
-        op = input("Seleccione el número de la materia (1 o 2): ")
-
-        if op == "1":
-            materia = "Algoritmos"
-        elif op == "2":
-            materia = "Programación"
-        else:
-            print("\n Opción de materia no válida. Intente de nuevo.")
-            return
-
-        # 4. Ingresar y validar la nota
-        nota = float(input(f"\nIngrese la nota para {materia} (0-100): "))
-
-        if 0 <= nota <= 100:
-            # 5. Asignar la nota en 'calificaciones' (consistente con `main.py`)
-            estudiante['calificaciones'][materia] = nota
-            print(f"\n\nNota asignada: {estudiante.get('nombre','')} {estudiante.get('apellido','')} | {materia}: {nota:.2f}\n")
-        else:
-            print("\n La nota debe ser un valor entre 0 y 100.")
-
+        id_est = int(input("\nIngrese el ID del estudiante: "))
     except ValueError:
-        print("\n Error: Entrada inválida. Asegúrese de ingresar números para el ID y la nota.")
+        print("ID inválido. Debe ingresar un número entero.")
+        return
+
+    estudiante = next((e for e in estudiantes if e.get('id') == id_est), None)
+    if not estudiante:
+        print("\n Estudiante con ese ID no encontrado.")
+        return
+
+    # Seleccionar materia
+    print(f"\nAsignando nota a: {estudiante.get('nombre','')} {estudiante.get('apellido','')}\n")
+    print("Materias disponibles:\n")
+    print(" 1) Algoritmos")
+    print(" 2) Programación\n")
+
+    op = input("Seleccione el número de la materia (1 o 2): ")
+    if op == "1":
+        materia = "Algoritmos"
+    elif op == "2":
+        materia = "Programación"
+    else:
+        print("\n Opción de materia no válida. Intente de nuevo.")
+        return
+
+    # Ingresar y validar la nota
+    try:
+        nota = float(input(f"Ingrese la nota para {materia} (0-100): "))
+    except ValueError:
+        print("\n Error: Nota inválida. Ingrese un número.")
+        return
+
+    if not (0 <= nota <= 100):
+        print("\n La nota debe ser un valor entre 0 y 100.")
+        return
+
+    # Asegurar que la clave 'nota' exista y sea un diccionario.
+    # Si existe una clave antigua 'calificaciones', migramos su contenido para compatibilidad.
+    if 'nota' not in estudiante or not isinstance(estudiante.get('nota'), dict):
+        estudiante['nota'] = {}
+        if 'calificaciones' in estudiante:
+            cal = estudiante.get('calificaciones')
+            if isinstance(cal, dict):
+                estudiante['nota'].update(cal)
+            elif isinstance(cal, list):
+                for i, v in enumerate(cal, start=1):
+                    estudiante['nota'][f'Nota{i}'] = v
+
+    estudiante['nota'][materia] = nota
+    # Mantener compatibilidad con la clave antigua 'calificaciones'
+    estudiante['calificaciones'] = dict(estudiante['nota'])
+
+    print(f"\nNota asignada: {estudiante.get('nombre','')} {estudiante.get('apellido','')} | {materia}: {nota:.2f}\n")
 
 
 if __name__ == "__main__":
