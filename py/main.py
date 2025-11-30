@@ -49,7 +49,8 @@ def menu_principal():
                 'id': len(estudiantes) + 1,
                 'nombre': nombre,
                 'apellido': apellido,
-                'calificaciones': []
+                # Guardar notas bajo la clave 'nota' (diccionario por materia)
+                'nota': {}
             }
 
             estudiantes.append(stu1)
