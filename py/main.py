@@ -20,7 +20,7 @@ def limpiar_pantalla():
 from calificaciones import asignar_nota
 from registro import registrar_alumnos
 from listaestudiantes import lista_estudiantes
-# from reportes import
+from reportes import generar_reportes, ranking_global, menu_reportes
 from buscar_estudiantes import buscar_estudiante
 
 
@@ -65,7 +65,15 @@ def menu_principal():
             lista_estudiantes(estudiantes)
             
         elif opcion == "4":
-            generar_reportes(estudiantes)
+
+            elegir = input("\n¿Desea generar reportes básicos (b) o ir al menú de reportes (m)? (b/m): ").strip().lower()
+
+            if elegir == 'm':
+                menu_reportes(estudiantes)
+            elif elegir == 'b':
+                generar_reportes(estudiantes)
+            else:
+                print('\nOpción de reportes no válida. Se canceló la operación.')
 
         elif opcion == "5":
             ranking_global(estudiantes)

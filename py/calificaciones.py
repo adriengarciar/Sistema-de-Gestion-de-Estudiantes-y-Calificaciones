@@ -5,20 +5,6 @@ def asignar_nota(estudiantes):
 
 
     print("\n===== ASIGNAR CALIFICACIÓN =====")
-    id_input = input("Ingrese el ID del estudiante: ")
-
-    # Convertir ID a entero
-    try:
-        id_buscar = int(id_input)
-    except ValueError:
-        print("ID inválido. Debe ingresar un número entero.")
-        return
-
-    # Buscar al estudiante por ID
-    for est in estudiantes:
-        if est.get("id") == id_buscar:
-            print(f"\nEstudiante encontrado: {est.get('nombre')} {est.get('apellido')}")
-
 
     # 1. Mostrar lista de estudiantes
     print("\n=== ASIGNAR NOTA ===\n")
@@ -31,23 +17,16 @@ def asignar_nota(estudiantes):
         # 2. Seleccionar estudiante
         id_est = int(input("\n\nIngrese el ID del estudiante: "))
 
-            # Si no tiene calificaciones crear lista
-            if est.get("calificaciones") is None:
-                est["calificaciones"] = []
-
-            # Añadir la nueva nota
-            est["calificaciones"].append(nueva_nota)
-
-            print("Nota asignada correctamente.")
-            print(f"Notas actuales: {est['calificaciones']}")
-
         # Buscar el estudiante por ID
-        estudiante = next((est for est in estudiantes if est.get('id') == id_est), None)
+        estudiante = next((s for s in estudiantes if s.get('id') == id_est), None)
 
         if not estudiante:
             print("\n Estudiante con ese ID no encontrado.")
-
             return
+
+        # Asegurar que la clave 'calificaciones' exista y sea un diccionario
+        if 'calificaciones' not in estudiante or not isinstance(estudiante.get('calificaciones'), dict):
+            estudiante['calificaciones'] = {}
 
         # 3. Seleccionar materia
         print(f"\n\nAsignando nota a: {estudiante.get('nombre','')} {estudiante.get('apellido','')}\n")
@@ -69,12 +48,8 @@ def asignar_nota(estudiantes):
         nota = float(input(f"\nIngrese la nota para {materia} (0-100): "))
 
         if 0 <= nota <= 100:
-            # 5. Asignar la nota
-            # Asegurar que la clave 'nota' exista y sea un diccionario
-            if 'nota' not in estudiante or not isinstance(estudiante.get('nota'), dict):
-                estudiante['nota'] = {}
-
-            estudiante['nota'][materia] = nota
+            # 5. Asignar la nota en 'calificaciones' (consistente con `main.py`)
+            estudiante['calificaciones'][materia] = nota
             print(f"\n\nNota asignada: {estudiante.get('nombre','')} {estudiante.get('apellido','')} | {materia}: {nota:.2f}\n")
         else:
             print("\n La nota debe ser un valor entre 0 y 100.")
