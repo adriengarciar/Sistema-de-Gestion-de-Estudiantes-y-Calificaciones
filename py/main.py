@@ -1,14 +1,6 @@
 # Lista donde se almacenan todos los estudiantes
 estudiantes = []
 
-#Diccionario base para crear los nuevos estudiantes
-# estudiante_base = {
-#     "iD", ""
-#     "nombre": "",
-#     "apellido": "",
-#     "calificaciones": None
-# }
-
 #limpiar terminal
 
 import os
@@ -66,16 +58,16 @@ def menu_principal():
             lista_estudiantes(estudiantes)
             
         elif opcion == "4":
-            print("\nEliga una opción:")
+            print("\n===Eliga una opción===\n")
             print("1. Generar reportes básicos.")
             print("2. Ir al menú de reportes.")
-            elegir = input("\nEliga 1:\t").strip()
+            elegir = input("\nEliga una de las opciones: ").strip()
             if elegir == '2':
                 menu_reportes(estudiantes)
             elif elegir == '1':
                 generar_reportes(estudiantes)
             else:
-                print('\nOpción de reportes no válida. Se canceló la operación.')
+                print('\nOpción de reportes no válida.')
 
         elif opcion == "5":
             ranking_global(estudiantes)
