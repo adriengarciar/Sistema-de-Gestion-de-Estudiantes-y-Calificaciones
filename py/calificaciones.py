@@ -19,6 +19,7 @@ def asignar_nota(estudiantes):
         if est.get("id") == id_buscar:
             print(f"\nEstudiante encontrado: {est.get('nombre')} {est.get('apellido')}")
 
+
     # 1. Mostrar lista de estudiantes
     print("\n=== ASIGNAR NOTA ===\n")
     print("Estudiantes disponibles:\n")
@@ -87,6 +88,7 @@ if __name__ == "__main__":
     # Ejecutar funciones de interfaz aquí puede provocar errores porque
     # `menu_principal` está definido en `main.py`. Solo mostrar ayuda.
     print("Módulo de calificaciones. Importar desde `main.py` para usar la aplicación.")
+
 
 
 
