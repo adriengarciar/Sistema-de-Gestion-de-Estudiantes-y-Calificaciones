@@ -67,11 +67,11 @@ def menu_principal():
             
         elif opcion == "4":
 
-            elegir = input("\n¿Desea generar reportes básicos (b) o ir al menú de reportes (m)? (b/m): ").strip().lower()
+            elegir = input("\n¿Desea generar reportes básicos (1) o ir al menú de reportes (1)? (1/2): ").strip()
 
-            if elegir == 'm':
+            if elegir == '2':
                 menu_reportes(estudiantes)
-            elif elegir == 'b':
+            elif elegir == '1':
                 generar_reportes(estudiantes)
             else:
                 print('\nOpción de reportes no válida. Se canceló la operación.')
