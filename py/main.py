@@ -9,12 +9,19 @@ estudiantes = []
 #     "calificaciones": None
 # }
 
+#limpiar terminal
+
+import os
+def limpiar_pantalla():
+    os.system('cls' if os.name == 'nt' else 'clear')    
+
 # FUNCIONES A IMPORTAR
 
 from calificaciones import asignar_nota
 from registro import registrar_alumnos
 from listaestudiantes import lista_estudiantes
 # from reportes import
+from buscar_estudiantes import buscar_estudiante
 
 
 #          MENÚ PRINCIPAL
