@@ -28,7 +28,7 @@ def menu_principal():
         print("3. Lista de estudiantes")
         print("4. Generar reportes de notas")
         print("5. Ranking global")
-        print("6. Buscar estudiante por nombre")
+        print("6. Buscar estudiante")
         print("9. Salir")
         print("==============================")
 
