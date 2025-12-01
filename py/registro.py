@@ -7,7 +7,7 @@ def registrar_alumnos():
             print("Solo coloque un nombre, sin espacios.")
             return False
         elif not nombre.isalpha():
-            print('error, por favor intente sin numeros')
+            print('error, por favor intente sin numeros o espacios')
             return False
         return True
 
@@ -41,3 +41,4 @@ def registrar_alumnos():
 if __name__ == "__main__":
     nombre, apellido = registrar_alumnos()
     print(f'Nombre: {nombre}, Apellido: {apellido}')
+
