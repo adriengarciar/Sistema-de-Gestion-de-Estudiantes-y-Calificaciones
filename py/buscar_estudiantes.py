@@ -2,7 +2,13 @@ def buscar_estudiante(estudiantes):
     if not estudiantes:
         print("\nNo hay estudiantes registrados.")
         return  
-    id_buscar = int(input("\nIngrese el ID del estudiante a buscar: "))
+        
+    try:
+        id_buscar = int(input("\nIngrese el ID del estudiante a buscar: "))
+    except ValueError:
+        print("\nID inválido. Debes ingresar un número entero.")
+        return
+
     for estu in estudiantes:
         if estu['id'] == id_buscar:
             nota = estu.get('nota', 'No asignada')
